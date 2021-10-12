@@ -103,7 +103,7 @@ USER jovyan
 COPY --chown=jovyan:jovyan startup.sh /home/jovyan
 COPY --chown=jovyan:jovyan entrypoint.sh /home/jovyan
 
-EXPOSE 8888
+EXPOSE 8080
 
 ENTRYPOINT ["/home/jovyan/entrypoint.sh"]
 
