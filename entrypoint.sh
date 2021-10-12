@@ -34,5 +34,5 @@ done
 
 base_url=$JUPYTERHUB_SERVICE_PREFIX
 
-voila /home/jovyan/Presentation.ipynb --port=${port} --no-browser --Voila.base_url=${base_url}
+/bin/bash /home/jovyan/startup.sh --port=${port} --no-browser --Guacamole.base_url=${base_url}
 
