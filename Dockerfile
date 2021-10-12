@@ -83,10 +83,13 @@ RUN wget "https://apache.mirror.digitalpacific.com.au/guacamole/${GUACAMOLE_VERS
     && ldconfig \
     && rm -r /etc/guacamole/guacamole-server-${GUACAMOLE_VERSION}*
 
-
 # Create Guacamole configurations
 RUN echo "user-mapping: /etc/guacamole/user-mapping.xml" > /etc/guacamole/guacamole.properties \
     && touch /etc/guacamole/user-mapping.xml
+COPY --chown=root:root user-mapping.xml /etc/guacamole/user-mapping.xml
+
+# Set tomcat to port 8888
+RUN sed -i 's/8080/8888/g' /usr/local/tomcat/conf/server.xml
 
 # Create user account with password-less sudo abilities and vnc user
 RUN addgroup jovyan \
@@ -96,6 +99,7 @@ RUN addgroup jovyan \
     && chown jovyan /home/jovyan/.vnc \
     && /usr/bin/printf '%s\n%s\n%s\n' 'password' 'password' 'n' | su jovyan -c vncpasswd
 
+
 ENV HOME=/home/jovyan
 WORKDIR $HOME
 USER jovyan
@@ -103,7 +107,7 @@ USER jovyan
 COPY --chown=jovyan:jovyan startup.sh /home/jovyan
 COPY --chown=jovyan:jovyan entrypoint.sh /home/jovyan
 
-EXPOSE 8080
+EXPOSE 8888
 
 ENTRYPOINT ["/home/jovyan/entrypoint.sh"]
 
