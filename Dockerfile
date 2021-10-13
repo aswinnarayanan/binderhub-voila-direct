@@ -85,7 +85,7 @@ RUN echo "user-mapping: /etc/guacamole/user-mapping.xml" > /etc/guacamole/guacam
 COPY --chown=root:root user-mapping.xml /etc/guacamole/user-mapping.xml
 
 # Set tomcat to port 8888
-# RUN sed -i 's/8080/8888/g' /usr/local/tomcat/conf/server.xml
+RUN sed -i 's/8080/8888/g' /usr/local/tomcat/conf/server.xml
 
 # Create user account with password-less sudo abilities and vnc user
 RUN addgroup jovyan \
@@ -108,6 +108,9 @@ RUN chmod +x /opt/simpleserver8888
 
 COPY entrypoint.sh /opt/entrypoint.sh
 RUN chmod +x /opt/entrypoint.sh
+
+RUN mv /usr/local/tomcat/webapps /usr/local/tomcat/webapps.new
+RUN mv /usr/local/tomcat/webapps.dist /usr/local/tomcat/webapps
 
 USER jovyan
 EXPOSE 8888
