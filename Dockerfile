@@ -1,4 +1,4 @@
-FROM python:3.7
+FROM jupyter/base-notebook:python-3.7.6
 # RUN pip3 install \
 #     voila \
 #     ipywidgets numpy matplotlib
