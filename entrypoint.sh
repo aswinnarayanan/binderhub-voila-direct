@@ -6,7 +6,7 @@
 
 
 collect_port=0
-port="8888"
+port="8080"
 delim='='
 
 for var in "$@"
