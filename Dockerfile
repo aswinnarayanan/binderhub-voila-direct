@@ -108,6 +108,7 @@ RUN chmod +x /opt/simpleserver8888
 
 COPY entrypoint.sh /opt/entrypoint.sh
 RUN chmod +x /opt/entrypoint.sh
+RUN chown -R jovyan:root /usr/local/tomcat
 
 RUN mv /usr/local/tomcat/webapps /usr/local/tomcat/webapps.new
 RUN mv /usr/local/tomcat/webapps.dist /usr/local/tomcat/webapps
