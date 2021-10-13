@@ -34,5 +34,4 @@ done
 
 base_url=$JUPYTERHUB_SERVICE_PREFIX
 
-/bin/bash /home/jovyan/startup.sh --port=${port} --no-browser --Guacamole.base_url=${base_url}
-
+/opt/simpleserver --port=${port} --no-browser --Guacamole.base_url=${base_url}
