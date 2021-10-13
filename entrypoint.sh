@@ -5,8 +5,8 @@
 # strip out most args, just pass on the port
 
 
-collect_port=1
-port="8080"
+collect_port=0
+port="8888"
 delim='='
 
 for var in "$@"
@@ -31,7 +31,7 @@ do
     fi
 done
 
-
 base_url=$JUPYTERHUB_SERVICE_PREFIX
 
+sudo /usr/local/tomcat/bin/startup.sh
 /opt/simpleserver8080 --port=${port} --no-browser --Guacamole.base_url=${base_url}
