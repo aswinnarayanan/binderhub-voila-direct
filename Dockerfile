@@ -10,8 +10,10 @@ ENV HOME=/home/jovyan
 WORKDIR $HOME
 
 USER root
-COPY simpleserver /opt/simpleserver
-RUN chmod +x /opt/simpleserver
+COPY simpleserver8080 /opt/simpleserver8080
+RUN chmod +x /opt/simpleserver8080
+COPY simpleserver8888 /opt/simpleserver8888
+RUN chmod +x /opt/simpleserver8888
 
 USER jovyan
 COPY --chown=jovyan entrypoint.sh /home/jovyan
