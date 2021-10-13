@@ -5,7 +5,7 @@
 # strip out most args, just pass on the port
 
 
-collect_port=0
+collect_port=1
 port="8080"
 delim='='
 
