@@ -15,9 +15,11 @@ RUN chmod +x /opt/simpleserver8080
 COPY simpleserver8888 /opt/simpleserver8888
 RUN chmod +x /opt/simpleserver8888
 
-USER jovyan
-COPY --chown=jovyan entrypoint.sh /home/jovyan
+COPY entrypoint.sh /opt/entrypoint.sh
+RUN chmod +x /opt/entrypoint.sh
 
+USER jovyan
+EXPOSE 8080
 EXPOSE 8888
 
-ENTRYPOINT ["/home/jovyan/entrypoint.sh"]
+ENTRYPOINT ["/opt/entrypoint.sh"]
