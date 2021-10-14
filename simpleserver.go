@@ -9,7 +9,6 @@ listing file.
 package main
 
 import (
-	"flag"
 	"log"
 	"net/http"
 )
@@ -19,7 +18,6 @@ func main() {
 	// directory := flag.String("d", ".", "the directory of static file to host")
 	port := "8888"
 	directory := "."
-	flag.Parse()
 
 	http.Handle("/", http.FileServer(http.Dir(directory)))
 
