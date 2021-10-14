@@ -87,13 +87,13 @@ ENV LC_ALL en_US.UTF-8
 # # Set tomcat to port 8888
 # RUN sed -i 's/8080/8888/g' /usr/local/tomcat/conf/server.xml
 
-# Create user account with password-less sudo abilities and vnc user
-RUN addgroup jovyan \
-    && /usr/bin/printf '%s\n%s\n' 'password' 'password'| passwd jovyan \
-    && echo "jovyan ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
-    && mkdir /home/jovyan/.vnc \
-    && chown jovyan /home/jovyan/.vnc \
-    && /usr/bin/printf '%s\n%s\n%s\n' 'password' 'password' 'n' | su jovyan -c vncpasswd
+# # Create user account with password-less sudo abilities and vnc user
+# RUN addgroup jovyan \
+#     && /usr/bin/printf '%s\n%s\n' 'password' 'password'| passwd jovyan \
+#     && echo "jovyan ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
+#     && mkdir /home/jovyan/.vnc \
+#     && chown jovyan /home/jovyan/.vnc \
+#     && /usr/bin/printf '%s\n%s\n%s\n' 'password' 'password' 'n' | su jovyan -c vncpasswd
 
 # create a user, since we don't want to run as root
 # RUN useradd -m jovyan
@@ -106,8 +106,8 @@ RUN chmod +x /opt/simpleserver
 
 COPY entrypoint.sh /opt/entrypoint.sh
 RUN chmod +x /opt/entrypoint.sh
-RUN chown -R jovyan:root /usr/local/tomcat
 
+# RUN chown -R jovyan:root /usr/local/tomcat
 # RUN mv /usr/local/tomcat/webapps /usr/local/tomcat/webapps.new
 # RUN mv /usr/local/tomcat/webapps.dist /usr/local/tomcat/webapps
 
