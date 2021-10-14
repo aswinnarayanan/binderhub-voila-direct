@@ -35,4 +35,4 @@ base_url=$JUPYTERHUB_SERVICE_PREFIX
 
 # /opt/simpleserver &
 # /usr/local/tomcat/bin/startup.sh
-/opt/simpleserver --port=${port} --no-browser --Guacamole.base_url=${base_url}
+/opt/simpleserver8888 --port=${port} --no-browser --Guacamole.base_url=${base_url}
